@@ -59,4 +59,30 @@ felinos %>%
       )
     )
 ```
-# Gráfico   
+# Gráfico
+```{r grafico, messages=FALSE, echo=FALSE}
+grafico_barras_felinos <-
+felinos %>%
+  ggplot(aes(x = species)) +
+  geom_bar()
+
+ggplotly(grafico_barras_felinos)
+```
+# Mapa
+```{r mapa}
+# Mapa leaflet básico de provincias y registros de presencia de felinos
+leaflet() %>%
+  addTiles() %>% # capa base de OSM
+  addCircleMarkers( # capa de registros de presencia (puntos)
+    data = felinos,
+    stroke = F,
+    radius = 4,
+    fillColor = 'blue',
+    fillOpacity = 1
+  )
+
+```
+
+
+
+
